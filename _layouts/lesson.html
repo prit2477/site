@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=1&color=529EEC&title=0&byline=0&portrait=0" 
+  width="1200" height="698" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-uk-responsive></iframe>
+
+
+<section>
+  <div>
+    <h2>{{page.title}}</h2>
+    <div class="uk-child-width-1-2@s uk-child-width-1-3@m" data-uk-grid>
+      {% assign courses = site.courses | order: 'weight' %}
+      {% for course in courses %}
+        <div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

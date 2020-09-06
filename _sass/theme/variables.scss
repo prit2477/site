@@ -1,6 +1,6 @@
-// // Global variables
-// $global-background:                             #fff;
-// $global-primary-background:                     #d63241;
+// Global variables
+$global-background:                             #fff;
+$global-primary-background:                     #529EEC;
 // $global-muted-background:                       #F6F4F2;
 // $global-secondary-background:                   #000;
 // $global-color:                                  #000;
@@ -26,7 +26,9 @@
 // $heading-2xlarge-font-size-l:                   8rem;
 // $serif-font-family:                             'Playfair Display', serif;
 // $logo-font-size:                                1.5rem;
-// $logo-font-family:                              $serif-font-family;
+$inverse-logo-color:                              $global-background;
+$inverse-logo-hover-color:                        $global-background;
+
 // $container-padding-horizontal:                  20px;
 // $container-xsmall-max-width:                    700px;
 // $container-small-max-width:                     960px;
@@ -65,20 +67,22 @@
 // $form-background:                               transparent;
 // $form-focus-background:                         transparent;
 
-// // Navigation variables
+// Navigation variables
+$navbar-background:                              $global-primary-background;
+
 // $navbar-nav-item-height:                        100px;
-// $navbar-nav-item-color:                         $global-secondary-background;
+// $navbar-nav-item-color:                         $global-background;
 // $navbar-nav-item-hover-color:                   $global-primary-background;
 // $navbar-nav-item-active-color:                  $global-primary-background;
 // $navbar-nav-item-font-size:                     0.8125rem;
 // $navbar-toggle-color:                           $global-secondary-background;
 // $navbar-toggle-hover-color:                     $global-primary-background;
-// $inverse-navbar-nav-item-color:                 #fff;
+$inverse-navbar-nav-item-color:                 $global-background;
 // $inverse-navbar-nav-item-hover-color:           $global-primary-background;
 // $inverse-navbar-nav-item-onclick-color:         $global-primary-background;
 // $inverse-navbar-nav-item-active-color:          $global-primary-background;
-// $inverse-navbar-item-color:                     #fff;
-// $inverse-navbar-toggle-color:                   #fff;
+$inverse-navbar-item-color:                     $global-background;
+$inverse-navbar-toggle-color:                   $global-background;
 // $inverse-navbar-toggle-hover-color:             $global-primary-background;
 
 // // Section variables

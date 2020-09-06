@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<section class="uk-section uk-section-muted">
+  <div class="uk-container">
+    <ul class="uk-breadcrumb">
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li class="uk-disabled"><a>Disabled</a></li>
+      <li><span>Active</span></li>
+    </ul>
+  
+    <div class="uk-padding uk-background-default uk-border-rounded uk-box-shadow-small">
+      <h2>{{page.title}}</h2>
+      <div>{{content}}</div>
+
+      <div class="u-margin-top">
+        {% for section in page.sections %}
+        <h5>{{ section.title }}</h5>
+        <ul class="uk-nav uk-nav-default">
+        {% for lesson in section.lessons %}
+          {% assign p = site.lessons | where:"url", lesson | first %}
+          <li class="{% if lesson_url == page.url %}uk-active{% endif %}"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+        {% endfor %}
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{{content}}

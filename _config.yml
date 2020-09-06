@@ -1,5 +1,5 @@
 ---
-title: Learn Docker
+title: LearnDocker
 description: 
 url: 
 baseurl: 
@@ -10,9 +10,6 @@ permalink: "/:title/"
 
 author:
   email: julian@learndocker.online
-
-# navbar:
-#   sticky: true
   
 footer:
   copyright: A course by Julian Fahrer. ©2018 Happy Programmer LLC. All rights reserved.

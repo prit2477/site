@@ -1,9 +1,5 @@
 
-- title: Projects
-  url: "/"
-- title: How
-  url: "/how/"
-- title: About
-  url: "/about/"
-- title: Contact
-  url: "/contact/"
+- title: My Courses
+  url: "/courses/"
+- title: Contact Us
+  url: "mailto:julian@learndocker.online?subject=Question about LearnDocker.online"

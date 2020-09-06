@@ -1,0 +1,78 @@
+---
+title: Learn Docker
+description: 
+url: 
+baseurl: 
+lang: en
+logo: 
+logo_light: 
+permalink: "/:title/"
+
+author:
+  email: julian@learndocker.online
+
+# navbar:
+#   sticky: true
+  
+footer:
+  copyright: A course by Julian Fahrer. ©2018 Happy Programmer LLC. All rights reserved.
+
+google_analytics: 
+
+social_networks:
+  facebook: 
+  flickr: 
+  dribbble: 
+  github: 
+  instagram: 
+  linkedin: 
+  pinterest: 
+  twitter: 
+  vimeo: 
+  youtube: 
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+- jekyll-seo-tag
+
+exclude:
+- vendor
+- ".bundle"
+- ".sass-cache"
+- config
+- Gemfile
+- Gemfile.lock
+- node_modules
+- log
+- tmp
+- Rakefile
+- package.json
+- CHANGELOG
+- LICENSE
+- README
+- "/docs"
+
+sass:
+  style: compressed
+
+livereload: true
+
+collections:
+  courses:
+    output: true
+  lessons:
+    output: true
+
+defaults:
+- scope:
+    path: ''
+    type: courses
+  values:
+    layout: course
+- scope:
+    path: ''
+    type: lessons
+  values:
+    layout: lesson

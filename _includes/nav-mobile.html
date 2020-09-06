@@ -1,0 +1,52 @@
+<div id="nav-mobile" class="uk-modal-full" data-uk-modal>
+  <div class="uk-modal-dialog">
+
+    <div class="uk-container">
+      <div data-uk-navbar>
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="{{ "/" | relative_url }}">
+            {% if site.logo_light or site.logo %}
+              {% if site.logo_light %}
+                <img class="uk-logo-inverse" src="{{ site.logo_light | absolute_url }}" alt="{{ site.title }}">
+              {% endif %}
+              {% if site.logo %}
+                <img src="{{ site.logo | absolute_url }}" alt="{{ site.title }}">
+              {% endif %}
+            {% else %}
+              {{ site.title }}
+            {% endif %}
+          </a>
+        </div>
+        <div class="uk-navbar-right">
+          <button class="uk-navbar-item uk-modal-close-full uk-close-large" type="button" data-uk-close></button>
+        </div>
+      </div>
+    </div>
+    <div class="uk-container uk-container-xsmall">
+      <div class="uk-flex uk-flex-middle" data-uk-height-viewport>
+        <div>
+          <ul class="uk-nav uk-nav-mobile">
+            {% for link in site.data.mobile %}
+              {% if link.url contains 'http' %}
+                  {% assign domain = '' %}
+              {% else %}
+                  {% assign domain = '' | relative_url %}
+              {% endif %}
+
+              {% if link.url == page.url %}
+                  {% assign current = ' class="uk-active"' %}
+              {% else %}
+                  {% assign current = null %}
+              {% endif %}
+
+              <li{{ current }}><a class="uk-h3 uk-heading-medium" href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+          <div class="uk-margin-xlarge-top uk-text-uppercase uk-h5 uk-text-spacing">
+            {% include social-networks.html %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

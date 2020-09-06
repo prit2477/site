@@ -1,0 +1,14 @@
+# English (default)
+en:
+  previous:                   "Previous"
+  next:                       "Next"
+  contact_name:               "Name"
+  contact_email:              "Email"
+  contact_subject:            "Subject"
+  contact_message:            "Message"
+  contact_send:               "Send"
+  address:                    "Address"
+  contact:                    "Contact"
+  follow:                     "Follow us"
+  fill:                       "Fill out the form"
+  or:                         "Or"

@@ -1,0 +1,60 @@
+<footer class="uk-section-xlarge uk-section-{{site.footer.background | default: 'secondary'}}">
+  <div class="uk-container">
+    <div class="uk-grid-large" data-uk-grid>
+      <div class="uk-width-1-2@m uk-flex uk-flex-column">
+        <ul class="uk-list uk-text-small uk-h2 uk-margin-large-bottom">
+          {% for link in site.data.footer %}
+            {% if link.url contains 'http' %}
+              {% assign domain = '' %}
+            {% else %}
+              {% assign domain = '' | relative_url %}
+            {% endif %}
+            {% if link.url == page.url %}
+              {% assign current = ' class="uk-active"' %}
+            {% else %}
+              {% assign current = null %}
+            {% endif %}
+            {% if link.title %}
+              <li{{ current }}><a class="uk-h1 uk-text-serif" href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" rel="noopener" {% endif %}>{{ link.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="uk-margin-auto-top">
+          <a class="uk-logo uk-link-muted" href="{{ "/" | relative_url }}">
+            {% if site.logo_light or site.logo %}
+              {% if site.logo_light %}
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="uk-logo-inverse" data-src="{{ site.logo_light | absolute_url }}" alt="{{ site.title }}" data-uk-img>
+              {% endif %}
+              {% if site.logo %}
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ site.logo | absolute_url }}" alt="{{ site.title }}" data-uk-img>
+              {% endif %}
+            {% else %}
+              {{ site.title }}
+            {% endif %}
+          </a>
+        </div>
+      </div>
+      <div class="uk-width-1-2@m uk-h5 uk-text-spacing uk-text-uppercase">
+        {% if site.footer.address %}
+          <address class="uk-margin">{{ site.author.address }}</address>
+        {% endif %}
+        {% if site.footer.phone %}
+          <div class="uk-margin"><a href="tel:{{ site.author.phone }}">{{ site.author.phone }}</a></div>
+        {% endif %}
+        {% if site.footer.email %}
+          <div class="uk-margin"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></div>
+        {% endif %}
+        {% if site.footer.social %}
+          <div class="uk-margin">
+            <div>
+              {% include social-networks.html %}
+            </div>
+          </div>
+        {% endif %}
+        {% if site.footer.copyright %}
+          <div class="uk-margin-large-top uk-text-xsmall uk-text-muted uk-link-muted">{{ site.footer.copyright }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div> 
+</footer>

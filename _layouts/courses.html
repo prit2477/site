@@ -31,7 +31,7 @@ layout: default
                 </div>
               </div>
             </div>
-            <a class="uk-position-cover" href="{{course.url}}" title="{{course.title}}"></a>
+            <a class="uk-position-cover" href="{{course.url | relative_url}}" title="{{course.title}}"></a>
           </div>
         </div>
       {% endfor %}

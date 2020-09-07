@@ -6,4 +6,16 @@
 
   }
 
+  .uk-video-speed {
+    label {
+      width: auto !important;
+      display: inline-block !important;
+    }
+
+    select {
+      width: 60px !important;
+      margin-left: 10px;
+    }
+  }
+
 }

@@ -2,19 +2,90 @@
 layout: default
 ---
 
-<iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=1&color=529EEC&title=0&byline=0&portrait=0" 
-  width="1200" height="698" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-uk-responsive></iframe>
 
+  <section class="uk-section uk-section-muted">
+    <div class="uk-container">
+      <ul class="uk-breadcrumb">
+        <li><a href="#">Item</a></li>
+        <li><a href="#">Item</a></li>
+        <li class="uk-disabled"><a>Disabled</a></li>
+        <li><span>Active</span></li>
+      </ul>
+    
+      <div class="uk-background-default uk-border-rounded uk-box-shadow-small">
+        <progress id="js-progressbar" class="uk-progress uk-width-1-1" value="10" max="100"></progress>
+        <iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=1&color=529EEC&title=0&byline=0&portrait=0" 
+          width="1200" height="698" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-uk-responsive></iframe>
 
-<section>
-  <div>
-    <h2>{{page.title}}</h2>
-    <div class="uk-child-width-1-2@s uk-child-width-1-3@m" data-uk-grid>
-      {% assign courses = site.courses | order: 'weight' %}
-      {% for course in courses %}
-        <div>
+        <div class="uk-padding">
+          <div class="uk-form-horizontal uk-text-small" data-uk-grid>
+            <div class="uk-width-expand@s">
+              <label><input id="completed" class="uk-checkbox" type="checkbox">&nbsp; I have completed this</label>
+            </div>
+            <div class="uk-width-auto@s uk-video-speed">
+              <label class="uk-form-label" for="video-speed">Video speed:</label>
+                <select class="uk-select uk-form-small" id="video-speed-select" onchange="speedChange(this.value);">
+                  <option value="0.5">0.5x</option>
+                  <option value="1">1x </option>
+                  <option value="1.25">1.25x </option>
+                  <option value="1.5">1.5x </option>
+                  <option value="2">2x </option>
+                </select>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+            <script>
+              function createCookie(name, value, days) {
+                var expires = "";
+                if (days) {
+                  var date = new Date();
+                  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                  expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + value + expires + "; path=/";
+              }
+            
+              function readCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                  var c = ca[i];
+                  while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                  if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+              }
+
+              var iframe = document.querySelector('iframe');
+              var videoSpeedCookie = readCookie('videoSpeed');
+
+              if (videoSpeedCookie != null) {
+                var video = new Vimeo.Player(iframe);
+                speedChange(videoSpeedCookie);
+              } else {
+                var video = new Vimeo.Player(iframe);
+              }
+
+              function speedChange(speed) {
+                video.setPlaybackRate(speed).then(function(playbackRate) {
+                  createCookie('videoSpeed', speed, 31);
+                  document.getElementById('video-speed-select').value=speed;
+                });
+              }
+            </script>      
+          </div>
+          <h1>{{page.title}}</h1>
+          <div>{{content}}</div>
+    
+          {% for section in page.sections %}
+            <h5>{{ section.title }}</h5>
+            <ul class="uk-nav uk-nav-default">
+            {% for lesson in section.lessons %}
+              {% assign p = site.lessons | where:"url", lesson | first %}
+              <li class="{% if lesson_url == page.url %}uk-active{% endif %}"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+            {% endfor %}
+            </ul>
+          {% endfor %}
         </div>
-      {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
+  </section>

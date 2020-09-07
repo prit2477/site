@@ -56,6 +56,11 @@ layout: default
       if (cookie != null) {
         document.getElementById('progress-count-' + course).innerHTML = cookie;
         document.getElementById('progress-bar-' + course).value = cookie;
+
+        var url = readCookie(course + '_url');
+        if (url != null) {
+          document.getElementById('header-cta').href="{{'/' | relative_url}}" + url;
+        }
       }
     });
   };

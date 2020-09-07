@@ -5,11 +5,11 @@ layout: default
 <section class="uk-section-muted uk-section-large">
   <div class="uk-container">
     <h2>{{page.courses.title}}</h2>
-    <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-margin-medium-top" data-uk-grid>
-      {% assign courses = site.courses | order: 'weight' %}
+    <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-margin-medium-top uk-grid-match" data-uk-grid>
+      {% assign courses = site.courses | sort: 'weight' %}
       {% for course in courses %}
         <div>
-          <div class="uk-card uk-card-default uk-position-relative uk-card-hover">
+          <div class="uk-course uk-card uk-card-default uk-position-relative uk-card-hover uk-border-rounded" data-course="{{course.slug}}">
             <div class="uk-card-media-top">
               <img src="{{ course.image | absolute_url }}" alt="">
             </div>
@@ -17,12 +17,8 @@ layout: default
               <h3 class="uk-card-title">{{course.title}}</h3>
               <div>{{course.excerpt}}</div>
               <div class="uk-margin-top">
-                <div class="uk-text-small">0 of 13 videos complete</div>
-                <progress id="" class="uk-progress uk-width-1-1" value="10" max="100"></progress>
-              </div>
-              <div class="uk-margin-top">
-                <div class="uk-text-small">0 of 1 quizzes complete</div>
-                <progress id="" class="uk-progress uk-width-1-1" value="10" max="100"></progress>
+                <div class="uk-text-small"><span id="progress-count-{{course.slug}}">0</span> of 13 videos complete</div>
+                <progress id="progress-bar-{{course.slug}}" class="uk-progress uk-width-1-1" value="0" max="100"></progress>
               </div>
               <div class="uk-child-width-1-2 uk-margin-top uk-flex uk-flex-middle" data-uk-grid>
                 <div>Overview</div>
@@ -38,3 +34,29 @@ layout: default
     </div>
   </div>
 </section>
+
+<script>
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  const courses = document.querySelectorAll('.uk-course');
+
+  window.onload = function(){
+    courses.forEach(el => {
+      var course = el.getAttribute('data-course');
+      var cookie = readCookie(course);
+      if (cookie != null) {
+        document.getElementById('progress-count-' + course).innerHTML = cookie;
+        document.getElementById('progress-bar-' + course).value = cookie;
+      }
+    });
+  };
+</script>

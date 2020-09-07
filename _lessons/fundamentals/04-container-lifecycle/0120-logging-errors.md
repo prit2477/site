@@ -1,18 +1,16 @@
 ---
-title: Logging errors
-course: fundamentals
-chapter_number: 04
-chapter: Container lifecycle
-lesson_number: 0120
 lesson_id: 4d71e0b1d40d
-video_url: https://vimeo.com/259597811
-type: video
+title: Logging errors
+permalink: "/fundamentals/container-lifecycle/logging-errors/"
+course: fundamentals
+vimeo: '259597811'
+type: assignment
 discussion_id: 4d71e0b1d40d
 ---
-# Changes to the examples
+
+## Changes to the examples
 * [Add the 2nd assignment](https://github.com/learndocker/docker_examples/commit/93492dc)
 
-# Resources
 ## The Dockerfile
 ```
 FROM debian:buster-slim

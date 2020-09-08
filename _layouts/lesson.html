@@ -23,8 +23,8 @@ layout: default
     {% endfor %}      
   
     <div class="uk-background-default uk-border-rounded uk-box-shadow-small">
-      <progress id="progress" class="uk-progress uk-width-1-1" value="10" max="100"></progress>
-      <iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=0&color=529EEC&title=0&byline=0&portrait=0" 
+      <progress id="progress" class="uk-progress uk-width-1-1" value="0" max="100"></progress>
+      <iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=1&color=529EEC&title=0&byline=0&portrait=0" 
         width="1200" height="698" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-uk-responsive></iframe>
 
       <div class="uk-padding">
@@ -116,7 +116,12 @@ layout: default
 
             var lesson = completed.getAttribute('data-lesson');
             var lessonString = localStorage.getItem('{{current_course.slug}}');
-            var lessonArray = lessonString.split(',');
+            if (lessonString === null) {
+              var lessonArray = '';
+            } else {
+              var lessonArray = lessonString.split(',');
+            }
+            
             var index = lessonArray.indexOf(lesson);
             var completedCheckbox = document.getElementById('completed');
 

@@ -69,7 +69,12 @@
   };
 
   var lessonString = localStorage.getItem('{{current_course.slug}}');
-  var lessonArray = lessonString.split(',');
+
+  if (lessonString === null) {
+    var lessonArray = '';
+  } else {
+    var lessonArray = lessonString.split(',');
+  }
 
   sidebarCompletedCount();
 </script>

@@ -3,16 +3,19 @@
 
   {% include head.html %}
 
-  <body
-    class="{% unless page.background contains '#' %}uk-background-{{ page.background }}{% endunless %}" 
-    style="{% if page.background contains '#' %}background-color: {{ page.background }};{% endif %}"  
-  >
+  <body>
     {% include header.html %}
 
     {{ content }}
 
+    {% include footer-scripts.html %}
+
     {% include footer.html %}
 
+    {% if page.layout == 'course' or page.layout == 'lesson' %}
+      {% include nav-course.html %}
+    {% endif %}
+      
     {% include nav-mobile.html %}
 
     </body>

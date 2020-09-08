@@ -1,8 +1,61 @@
 
+@mixin hook-offcanvas-bar(){
+  @media (max-width: $breakpoint-medium) {
+    
+  }
+}
+
+@mixin hook-inverse-nav-parent-icon(){
+  color: $global-background;
+}
+@mixin hook-inverse-nav-default-item(){
+  color: $global-background;
+}
 
 @mixin hook-utility-misc(){
 
   @media (max-width: $breakpoint-medium) {
+
+  }
+
+  .uk-nav-default {
+    .uk-open {
+      > a {
+        color: $global-background !important;
+      }
+    }
+
+    .uk-parent {
+      position: relative;
+
+      > a {
+        padding-right: 30px;
+
+        &:after {
+          margin-right: -30px;
+        }
+
+      }
+      .uk-sidebar-parent-count {
+        position: absolute;
+        right: 22px;
+        top: 5px;
+      }  
+    }
+
+    .uk-nav-sub {
+      a {
+        .uk-icon {
+          float: right;
+        }
+      }
+    }
+
+    .uk-completed {
+      a {
+        color: $global-success-background !important;
+      }
+    }
 
   }
 

@@ -4,7 +4,7 @@ title: Courses
 header:
   background: primary
   # width: 2-3
-  title: Welcome back to LearnDocker.online
+  title: Welcome to LearnDocker.online
   subtitle: |
     Welcome to LearnDocker.online!
     Start working on Introduction, or choose another course below.

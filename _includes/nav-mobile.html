@@ -27,7 +27,7 @@
         <div>
           <ul class="uk-nav uk-nav-mobile">
             {% for link in site.data.mobile %}
-              {% if link.url contains 'http' %}
+              {% if link.url contains 'mailto:' %}
                   {% assign domain = '' %}
               {% else %}
                   {% assign domain = '' | relative_url %}

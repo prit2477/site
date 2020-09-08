@@ -19,7 +19,7 @@
     <div class="uk-navbar-right uk-text-spacing uk-text-500">
       <ul class="uk-navbar-nav uk-visible@m">
         {% for link in site.data.navbar %}
-          {% if link.url contains 'http' %}
+          {% if link.url contains 'mailto:' %}
             {% assign domain = '' %}
           {% else %}
             {% assign domain = '' | relative_url %}
@@ -33,9 +33,9 @@
             <li{{ current }}>
               {% if link.url %}
                 {% if link.button %}
-                  <div class="uk-navbar-item"><a class="uk-button uk-button-{{ link.button | default: 'default' }}" href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" rel="noopener" {% endif %}>{{ link.title }}</a></div>
+                  <div class="uk-navbar-item"><a class="uk-button uk-button-{{ link.button | default: 'default' }}" href="{{ domain }}{{ link.url }}" {% if link.url contains 'mailto:' %}target="_blank" rel="noopener" {% endif %}>{{ link.title }}</a></div>
                 {% else %}
-                  <a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" rel="noopener" {% endif %}>{{ link.title }}</a>
+                  <a href="{{ domain }}{{ link.url }}" {% if link.url contains 'mailto:' %}target="_blank" rel="noopener" {% endif %}>{{ link.title }}</a>
                 {% endif %}
               {% else %}
                 <a href="#">{{ link.title }}</a>
@@ -45,7 +45,7 @@
                   <ul class="uk-nav uk-navbar-dropdown-nav">
                     {% for child in link.dropdown %}
                       {% if child.url != null %}
-                        {% if child.url contains 'http' %}
+                        {% if child.url contains 'mailto:' %}
                           {% assign domain = '' %}
                         {% else %}
                           {% assign domain = '' | relative_url %}
@@ -67,7 +67,11 @@
           {% endif %}
         {% endfor %}
       </ul>
-
+      {% if page.layout == 'course' or page.layout == 'lesson' %}
+        <a class="uk-navbar-toggle" href="#nav-course" data-uk-toggle>
+          <span data-uk-navbar-toggle-icon="ratio: 1.2"></span> <span class="uk-margin-small-left">Lessons</span>
+        </a>
+      {% endif %}
       <a class="uk-navbar-toggle uk-hidden@m" href="#nav-mobile" aria-label="Mobile Navigation" data-uk-navbar-toggle-icon="ratio: 1.2" data-uk-toggle></a>
 
     </div>

@@ -2,90 +2,234 @@
 layout: default
 ---
 
+<section class="uk-section uk-section-muted">
+  <div class="uk-container">
 
-  <section class="uk-section uk-section-muted">
-    <div class="uk-container">
-      <ul class="uk-breadcrumb">
-        <li><a href="#">Item</a></li>
-        <li><a href="#">Item</a></li>
-        <li class="uk-disabled"><a>Disabled</a></li>
-        <li><span>Active</span></li>
-      </ul>
-    
-      <div class="uk-background-default uk-border-rounded uk-box-shadow-small">
-        <progress id="js-progressbar" class="uk-progress uk-width-1-1" value="10" max="100"></progress>
-        <iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=1&color=529EEC&title=0&byline=0&portrait=0" 
-          width="1200" height="698" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-uk-responsive></iframe>
+    {% assign current_course = site.courses | where: 'slug', page.course | first %}
+    {% for section in current_course.sections %}
+      {% for item in section.lessons %}
+        {% if page.url == item %}
+          <ul class="uk-breadcrumb">
+            <li><a href="{{ '/courses/' | relative_url }}">Courses</a></li>
+            <li><a href="{{ current_course.url | relative_url }}">{{current_course.title}}</a></li>
+            {% if section.title %}
+              <li><a href="{{ current_course.url | relative_url }}">{{ section.title }}</a></li>
+            {% endif %}
+            <li><span>{{ page.title }}</span></li>
+          </ul>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}      
+  
+    <div class="uk-background-default uk-border-rounded uk-box-shadow-small">
+      <progress id="progress" class="uk-progress uk-width-1-1" value="10" max="100"></progress>
+      <iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=0&color=529EEC&title=0&byline=0&portrait=0" 
+        width="1200" height="698" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-uk-responsive></iframe>
 
-        <div class="uk-padding">
-          <div class="uk-form-horizontal uk-text-small" data-uk-grid>
-            <div class="uk-width-expand@s">
-              <label><input id="completed" class="uk-checkbox" type="checkbox">&nbsp; I have completed this</label>
-            </div>
-            <div class="uk-width-auto@s uk-video-speed">
-              <label class="uk-form-label" for="video-speed">Video speed:</label>
-                <select class="uk-select uk-form-small" id="video-speed-select" onchange="speedChange(this.value);">
-                  <option value="0.5">0.5x</option>
-                  <option value="1" selected>1x </option>
-                  <option value="1.25">1.25x </option>
-                  <option value="1.5">1.5x </option>
-                  <option value="2">2x </option>
-                </select>
-            </div>
-            <script src="https://player.vimeo.com/api/player.js"></script>
-            <script>
-              function createCookie(name, value, days) {
-                var expires = "";
-                if (days) {
-                  var date = new Date();
-                  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                  expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + value + expires + "; path=/";
-              }
-            
-              function readCookie(name) {
-                var nameEQ = name + "=";
-                var ca = document.cookie.split(';');
-                for (var i = 0; i < ca.length; i++) {
-                  var c = ca[i];
-                  while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                  if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
-              }
-
-              var iframe = document.querySelector('iframe');
-              var videoSpeedCookie = readCookie('videoSpeed');
-
-              if (videoSpeedCookie != null) {
-                var video = new Vimeo.Player(iframe);
-                speedChange(videoSpeedCookie);
-              } else {
-                var video = new Vimeo.Player(iframe);
-              }
-
-              function speedChange(speed) {
-                video.setPlaybackRate(speed).then(function(playbackRate) {
-                  createCookie('videoSpeed', speed, 31);
-                  document.getElementById('video-speed-select').value=speed;
-                });
-              }
-            </script>      
+      <div class="uk-padding">
+        <div class="uk-form-horizontal uk-text-small" data-uk-grid>
+          <div class="uk-width-expand@s">
+            <label><input id="completed" class="uk-checkbox" type="checkbox" data-lesson="{{page.lesson_id}}" onclick="toggleCompleted()">&nbsp; I have completed this</label>
           </div>
-          <h1>{{page.title}}</h1>
-          <div>{{content}}</div>
-    
-          {% for section in page.sections %}
-            <h5>{{ section.title }}</h5>
-            <ul class="uk-nav uk-nav-default">
-            {% for lesson in section.lessons %}
-              {% assign p = site.lessons | where:"url", lesson | first %}
-              <li class="{% if lesson_url == page.url %}uk-active{% endif %}"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+          <div class="uk-width-auto@s uk-video-speed">
+            <label class="uk-form-label" for="video-speed">Video speed:</label>
+              <select class="uk-select uk-form-small" id="video-speed-select" onchange="speedChange(this.value);">
+                <option value="0.5">0.5x</option>
+                <option value="1" selected>1x </option>
+                <option value="1.25">1.25x </option>
+                <option value="1.5">1.5x </option>
+                <option value="2">2x </option>
+              </select>
+          </div>
+          <script src="https://player.vimeo.com/api/player.js"></script>
+          <script>
+            function createCookie(name, value, days) {
+              var expires = "";
+              if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+              }
+              document.cookie = name + "=" + value + expires + "; path=/";
+            }
+          
+            function readCookie(name) {
+              var nameEQ = name + "=";
+              var ca = document.cookie.split(';');
+              for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+              }
+              return null;
+            }
+
+            var iframe = document.querySelector('iframe');
+            var videoSpeedCookie = readCookie('videoSpeed');
+
+            if (videoSpeedCookie != null) {
+              var video = new Vimeo.Player(iframe);
+              speedChange(videoSpeedCookie);
+            } else {
+              var video = new Vimeo.Player(iframe);
+            }
+
+            video.on('ended', function(data) {
+              toggleCompleted();
+            });
+
+            function speedChange(speed) {
+              video.setPlaybackRate(speed).then(function(playbackRate) {
+                createCookie('videoSpeed', speed, 31);
+                document.getElementById('video-speed-select').value=speed;
+              });
+            }
+
+            // Completed
+            {% assign current_course = site.courses | where: 'slug', page.course | first %}
+            {% assign total_lessons = 0 %}
+            {% assign total_current_lessons = 0 %}
+            {% assign current = false %}
+            {% for section in current_course.sections %}
+
+              {% if current != true %}
+                {% assign section_current = forloop.index0 %}
+              {% endif %}
+            
+              {% for lesson in section.lessons %}
+                {% assign total_lessons = total_lessons | plus: 1 %}
+                {% if current != true %}
+                  {% assign total_current_lessons = total_current_lessons | plus: 1 %}
+                  {% assign section_total = forloop.length %}
+                {% endif %}
+                {% if lesson == page.url %}
+                  {% assign current = true %}
+                {% endif %}
+              {% endfor %}
             {% endfor %}
-            </ul>
+
+            var courseTotal = {{total_lessons}};
+            var courseCurrent = {{total_current_lessons}};
+            var sectionTotal = {{section_total}};
+            var sectionCurrent = {{section_current}};
+
+            var lesson = completed.getAttribute('data-lesson');
+            var lessonString = localStorage.getItem('{{current_course.slug}}');
+            var lessonArray = lessonString.split(',');
+            var index = lessonArray.indexOf(lesson);
+            var completedCheckbox = document.getElementById('completed');
+
+            var addToLocalStorageArray = function (name, value) {
+              var existing = localStorage.getItem(name);
+              existing = existing ? existing.split(',') : [];
+              existing.push(value);
+              localStorage.setItem(name, existing.toString());
+            };
+
+            var removeFromLocalStorageArray = function (name, lesson) {
+              var index = lessonArray.indexOf(lesson)
+              var updatedArray = lessonArray.splice(index, 1)
+              localStorage.setItem(name, lessonArray)
+            };
+
+            function toggleCompleted() {
+              if (isInLocalStorageArray(lessonArray, lesson)) {
+                console.log('WAS INCLUDED REMOVING');
+
+                removeFromLocalStorageArray('{{current_course.slug}}', lesson)
+                console.log(localStorage.getItem('{{current_course.slug}}'));
+              } else {
+                console.log('NOT INCLUDED ADDED NOW');
+                addToLocalStorageArray('{{current_course.slug}}', lesson);
+                console.log(localStorage.getItem('{{current_course.slug}}'));
+
+                lessonString = localStorage.getItem('{{current_course.slug}}');
+                lessonArray = lessonString.split(',');
+                completedCheckbox.checked = true;
+              }
+              document.getElementById('progress').value = sectionCompletedCount();
+            };
+
+            console.log(lessonArray);
+            console.log(lesson);
+            console.log(index);
+            console.log(lessonArray.includes(lesson));
+            
+            if (isInLocalStorageArray(lessonArray, lesson)) {
+              completedCheckbox.checked = true;
+            }
+
+            var sectionCompletedCount = function () {
+              var count = 0;
+              courseArray = {{current_course.slug}}Array;
+              courseArray[sectionCurrent].forEach(function (item) { 
+                if (isInLocalStorageArray(lessonArray, item)) {
+                  count++;                    
+                }
+              }); 
+              return count;
+            };
+
+            document.getElementById('progress').value = sectionCompletedCount();
+            document.getElementById('progress').max = sectionTotal;
+            
+          </script>      
+        </div>
+        <h1>{{page.title}}</h1>
+        <div>{{content}}</div>
+  
+        {% for section in page.sections %}
+          <h5>{{ section.title }}</h5>
+          <ul class="uk-nav uk-nav-default">
+          {% for lesson in section.lessons %}
+            {% assign p = site.lessons | where:"url", lesson | first %}
+            <li class="{% if lesson_url == page.url %}uk-active{% endif %}"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+          {% endfor %}
+          </ul>
+        {% endfor %}
+
+        <div class="uk-margin-medium-top">
+          {% assign docs = current_course.sections | map: 'lessons' | join: ',' | split: ',' %}
+          {% for document in docs %}
+            {% assign document_url = document %}
+            {% if document_url == page.url %}
+              <div class="uk-margin-large-top paginate-post">
+                  <div class="uk-child-width-expand@s uk-grid-large uk-pagi" data-uk-grid>
+                      <div>
+                          {% if forloop.first %}
+                          {% else %}
+                            {% assign previous = forloop.index0 | minus: 1 %}
+                            {% assign previous_page = docs[previous] %}
+                            {% assign previous_doc = site.lessons | where:"url", previous_page | first %}
+                              <h5>{{previous_doc.title}}</h5>
+                              <div><a class="remove-underline hvr-back" href="{{previous_doc.url | relative_url}}">&larr; {{ site.data.translation[site.lang].previous | default: "Previous" }}</a></div>
+                          {% endif %}
+                      </div>
+                      <div class="uk-text-right@s">
+                          {% if forloop.last %}
+                          {% else %}
+                            {% assign next = forloop.index0 | plus: 1 %}
+                            {% assign next_page = docs[next] %}
+                            {% assign next_doc = site.lessons | where:"url", next_page | first %}
+                              <h5>{{next_doc.title}}</h5>
+                              <div><a class="remove-underline hvr-forward" href="{{next_doc.url | relative_url}}">{{ site.data.translation[site.lang].next | default: "Next" }} &rarr;</a></div>
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>
+              {% break %}
+            {% endif %}
           {% endfor %}
         </div>
+      
+        <div class="uk-margin-medium-top">
+          <h3>Comments</h3>
+          {% include talkyard-comments.html %}
+        </div>
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
+

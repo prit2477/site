@@ -1,0 +1,75 @@
+<div id="nav-course" data-uk-offcanvas>
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    {% if page.layout == 'course' %}
+      {% assign current_course = page %}
+    {% else %}
+      {% assign current_course = site.courses | where: 'slug', page.course | first %}
+    {% endif %}
+
+    <h3>{{current_course.title}}</h3>
+
+    <ul id="sidebar-nav" class="uk-nav-default uk-nav-parent-icon uk-margin-top" data-uk-nav="multiple: true">
+      <li><a href="{{ current_course.url | relative_url }}">Overview</a></li>
+      {% for section in current_course.sections %}
+        <li class="uk-parent">
+          {% for lesson in section.lessons %}
+            {% assign total_count = forloop.length %}
+          {% endfor %}
+          <a href="#">{{ section.title }}</a>
+          <div class="uk-sidebar-parent-count"><span id="section-count-{{forloop.index0}}">0</span>/{{total_count}}</div>
+          <ul class="uk-nav-sub">
+            {% for lesson in section.lessons %}
+              {% assign p = site.lessons | where:"url", lesson | first %}
+              {% if p.type == 'assignment' %}
+                {% assign lesson_icon = 'file-text' %}
+              {% else %}
+                {% assign lesson_icon = 'play-circle' %}
+              {% endif %}
+              <li id="id-{{p.lesson_id}}"><a href="{{ lesson | relative_url }}">{{ p.title }}<span data-uk-icon="icon: {{lesson_icon | default: 'play-circle'}}; ratio: 0.75"></span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+      </uk>
+
+  </div>
+</div>
+
+<script>
+  var sidebarCompletedCount = function () {
+    
+    var sidebarSectionCompletedCount = 0;
+    var sidebarSectionParentOpen = false;
+
+    courseArray = {{current_course.slug}}Array;
+    courseArray.forEach(function (section, i) { 
+
+      // console.log(section);
+
+      section.forEach(function (item) { 
+        if (isInLocalStorageArray(lessonArray, item)) {
+          document.getElementById('id-' + item).classList.add('uk-completed');   
+          sidebarSectionCompletedCount++;
+          // console.log(item);
+          
+        } else {
+          if (!sidebarSectionParentOpen) {
+            UIkit.nav('#sidebar-nav').toggle(i);
+          }
+          sidebarSectionParentOpen = true;
+        }
+      });
+
+      console.log('section-count-' + i);
+      document.getElementById('section-count-' + i).innerHTML = sidebarSectionCompletedCount; 
+      sidebarSectionCompletedCount = 0;  
+
+    }); 
+  };
+
+  var lessonString = localStorage.getItem('{{current_course.slug}}');
+  var lessonArray = lessonString.split(',');
+
+  sidebarCompletedCount();
+</script>

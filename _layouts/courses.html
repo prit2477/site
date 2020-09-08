@@ -11,19 +11,25 @@ layout: default
         <div>
           <div class="uk-course uk-card uk-card-default uk-position-relative uk-card-hover uk-border-rounded" data-course="{{course.slug}}">
             <div class="uk-card-media-top">
-              <img src="{{ course.image | absolute_url }}" alt="">
+              <img src="{{ course.image | absolute_url }}" alt="{{course.title}}">
             </div>
             <div class="uk-card-body">
               <h3 class="uk-card-title">{{course.title}}</h3>
               <div>{{course.excerpt}}</div>
               <div class="uk-margin-top">
-                <div class="uk-text-small"><span id="progress-count-{{course.slug}}">0</span> of 13 videos complete</div>
-                <progress id="progress-bar-{{course.slug}}" class="uk-progress uk-width-1-1" value="0" max="100"></progress>
+                {% assign total_lessons = 0 %}
+                {% for section in course.sections %}
+                  {% for lesson in section.lessons %}
+                    {% assign total_lessons = total_lessons | plus: 1 %}
+                  {% endfor %}
+                {% endfor %}
+                <div class="uk-text-small"><span id="progress-count-{{course.slug}}">0</span> of {{total_lessons}} videos complete</div>
+                <progress id="progress-bar-{{course.slug}}" class="uk-progress uk-width-1-1" value="0" max="{{total_lessons}}"></progress>
               </div>
               <div class="uk-child-width-1-2 uk-margin-top uk-flex uk-flex-middle" data-uk-grid>
                 <div>Overview</div>
                 <div class="uk-text-right uk-position-z-index">
-                  <a class="uk-button uk-button-small uk-button-primary" href="#">Start</a>
+                  <a id="course-button-{{course.slug}}" class="uk-button uk-button-small uk-button-primary" href="{{course.url | relative_url}}">Start</a>
                 </div>
               </div>
             </div>
@@ -35,33 +41,42 @@ layout: default
   </div>
 </section>
 
+
 <script>
-  function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  var courseCompletedCount = function (course, Array) {
+
+    var lessonString = localStorage.getItem(course);
+    if (lessonString === null) {
+      return;
     }
-    return null;
-  }
+    var lessonArray = lessonString.split(',');
+    
+    var courseCompletedCount = 0;
+    var resumeCourse = false;
+    var resumeLessonId;
 
-  const courses = document.querySelectorAll('.uk-course');
-
-  window.onload = function(){
-    courses.forEach(el => {
-      var course = el.getAttribute('data-course');
-      var cookie = readCookie(course);
-      if (cookie != null) {
-        document.getElementById('progress-count-' + course).innerHTML = cookie;
-        document.getElementById('progress-bar-' + course).value = cookie;
-
-        var url = readCookie(course + '_url');
-        if (url != null) {
-          document.getElementById('header-cta').href="{{'/' | relative_url}}" + url;
+    Array.forEach(function (section, i) { 
+      section.forEach(function (item, x) { 
+        if (isInLocalStorageArray(lessonArray, item)) {
+          courseCompletedCount++;
+        } else {
+          resumeLessonId = item;
+          if (!resumeCourse && x > 0) {
+            document.getElementById('course-button-' + course).innerHTML = 'Resume';
+            resumeCourse = true;
+          }
         }
-      }
-    });
+      });
+    }); 
+
+    console.log(courseCompletedCount);
+
+    document.getElementById('progress-count-' + course).innerHTML = courseCompletedCount;
+    document.getElementById('progress-bar-' + course).value = courseCompletedCount;
+
   };
+
+  {% for course in courses %}
+    courseCompletedCount('{{course.slug}}', {{course.slug}}Array);
+  {% endfor %}
 </script>

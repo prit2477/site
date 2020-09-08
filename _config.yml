@@ -16,6 +16,8 @@ footer:
 
 google_analytics: 
 
+talkyard_server_url: https://comments-demo.talkyard.io #https://comments-for-learndocker-online.talkyard.net
+
 social_networks:
   facebook: 
   flickr: 

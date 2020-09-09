@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<section class="uk-section-muted uk-section-large">
+<section class="uk-section-muted uk-section">
   <div class="uk-container">
     <h2>{{page.courses.title}}</h2>
     <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-margin-medium-top uk-grid-match" data-uk-grid>
@@ -24,7 +24,7 @@ layout: default
                   {% endfor %}
                 {% endfor %}
                 <div class="uk-text-small"><span id="progress-count-{{course.slug}}">0</span> of {{total_lessons}} videos complete</div>
-                <progress id="progress-bar-{{course.slug}}" class="uk-progress uk-width-1-1" value="0" max="{{total_lessons}}"></progress>
+                <progress id="progress-bar-{{course.slug}}" class="uk-progress uk-progress-small uk-width-1-1" value="0" max="{{total_lessons}}"></progress>
               </div>
               <div class="uk-child-width-1-2 uk-margin-top uk-flex uk-flex-middle" data-uk-grid>
                 <div>Overview</div>
@@ -66,6 +66,7 @@ layout: default
             document.getElementById('course-button-' + course).setAttribute('href', urls[item][1]);
             document.getElementById('header-next-lesson').innerHTML = 'It looks like your next lesson is <b>' + urls[item][0] + '</b>.<br>';
             document.getElementById('header-cta').setAttribute('href', urls[item][1]);
+            document.getElementById('header-cta').innerHTML = 'Resume';
             
             console.log(urls[item][1]);
             resumeCourse = true;

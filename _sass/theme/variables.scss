@@ -1,10 +1,10 @@
 // Global variables
 $global-background:                             #fff;
 $global-primary-background:                     #529EEC;
-// $global-muted-background:                       #F6F4F2;
-// $global-secondary-background:                   #000;
-// $global-color:                                  #000;
-// $global-muted-color:                            #C5C3C2;
+$global-muted-background:                       #eef5fd;
+$global-secondary-background:                   #0E2144;
+$global-color:                                  #626f81;
+$global-muted-color:                            #8694a8;
 // $global-border:                                 $global-secondary-background;
 // $global-font-family:                            'Montserrat', sans-serif;
 // $global-link-color:                             $global-secondary-background;
@@ -15,8 +15,9 @@ $global-primary-background:                     #529EEC;
 // $xsmall-font-size:                              0.75rem;
                             
 // // Base variables
-// $base-body-font-weight:                         400;
-// $base-heading-font-weight:                      600;
+$global-2xlarge-font-size:                      3rem;
+$base-body-font-weight:                         300;
+$base-heading-font-weight:                      400;
 // $heading-xlarge-font-size:                      4rem;
 // $heading-xlarge-font-size-l:                    4.5rem;
 // $heading-xlarge-font-size:                      3.5rem;
@@ -24,22 +25,25 @@ $global-primary-background:                     #529EEC;
 // $heading-2xlarge-font-size:                     4.5rem;
 // $heading-2xlarge-font-size-m:                   6.5rem;
 // $heading-2xlarge-font-size-l:                   8rem;
-// $serif-font-family:                             'Playfair Display', serif;
+$base-heading-font-family:                        'Varela Round', sans-serif;;
 // $logo-font-size:                                1.5rem;
 $inverse-logo-color:                              $global-background;
 $inverse-logo-hover-color:                        $global-background;
 
+$button-text-transform:                           none;
+$navbar-nav-item-text-transform:                  none;
+$card-title-font-size:                            1.75rem;
 $offcanvas-bar-width-m:                          380px;
 // $container-padding-horizontal:                  20px;
 // $container-xsmall-max-width:                    700px;
 // $container-small-max-width:                     960px;
-// $base-heading-color:                            #000;
+$base-heading-color:                            #000;
 // $letter-spacing:                                3px;
 // $letter-spacing-small:                          2px;
 // $letter-spacing-xsmall:                         1px;
 // $overlay-primary-background:                     rgba($global-secondary-background, 0.1);
-// $global-inverse-color:                          #fff;
-// $inverse-global-color:                          $global-inverse-color;
+$global-inverse-color:                          #fff;
+$inverse-global-color:                          $global-inverse-color;
 
 // // Accordion
 // $accordion-title-color:                         $global-color;
@@ -79,12 +83,12 @@ $navbar-background:                              $global-primary-background;
 // $navbar-toggle-color:                           $global-secondary-background;
 // $navbar-toggle-hover-color:                     $global-primary-background;
 $inverse-navbar-nav-item-color:                 $global-background;
-// $inverse-navbar-nav-item-hover-color:           $global-primary-background;
-// $inverse-navbar-nav-item-onclick-color:         $global-primary-background;
-// $inverse-navbar-nav-item-active-color:          $global-primary-background;
+$inverse-navbar-nav-item-hover-color:           $global-secondary-background;
+$inverse-navbar-nav-item-onclick-color:         $global-secondary-background;
+$inverse-navbar-nav-item-active-color:          $global-secondary-background;
 $inverse-navbar-item-color:                     $global-background;
 $inverse-navbar-toggle-color:                   $global-background;
-// $inverse-navbar-toggle-hover-color:             $global-primary-background;
+$inverse-navbar-toggle-hover-color:             $global-secondary-background;
 
 // // Section variables
 // $section-xlarge-padding-vertical:               120px;

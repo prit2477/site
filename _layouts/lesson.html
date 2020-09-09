@@ -22,8 +22,9 @@ layout: default
       {% endfor %}
     {% endfor %}      
   
+    <progress id="progress" class="uk-progress uk-progress-lesson uk-margin-top uk-margin-bottom uk-width-1-1" value="0" max="100"></progress>
+    
     <div class="uk-background-default uk-border-rounded uk-box-shadow-small">
-      <progress id="progress" class="uk-progress uk-width-1-1" value="0" max="100"></progress>
       <iframe src="https://player.vimeo.com/video/{{page.vimeo}}?autoplay=1&color=529EEC&title=0&byline=0&portrait=0" 
         width="1200" height="698" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-uk-responsive></iframe>
 
@@ -194,7 +195,7 @@ layout: default
           </ul>
         {% endfor %}
 
-        <div class="uk-margin-medium-top">
+        <div class="uk-margin-large-top">
           {% assign docs = current_course.sections | map: 'lessons' | join: ',' | split: ',' %}
           {% for document in docs %}
             {% assign document_url = document %}
@@ -207,7 +208,7 @@ layout: default
                             {% assign previous = forloop.index0 | minus: 1 %}
                             {% assign previous_page = docs[previous] %}
                             {% assign previous_doc = site.lessons | where:"url", previous_page | first %}
-                              <h5>{{previous_doc.title}}</h5>
+                              <h4>{{previous_doc.title}}</h4>
                               <div><a class="remove-underline hvr-back" href="{{previous_doc.url | relative_url}}">&larr; {{ site.data.translation[site.lang].previous | default: "Previous" }}</a></div>
                           {% endif %}
                       </div>
@@ -217,7 +218,7 @@ layout: default
                             {% assign next = forloop.index0 | plus: 1 %}
                             {% assign next_page = docs[next] %}
                             {% assign next_doc = site.lessons | where:"url", next_page | first %}
-                              <h5>{{next_doc.title}}</h5>
+                              <h4>{{next_doc.title}}</h4>
                               <div><a class="remove-underline hvr-forward" href="{{next_doc.url | relative_url}}">{{ site.data.translation[site.lang].next | default: "Next" }} &rarr;</a></div>
                           {% endif %}
                       </div>
@@ -228,8 +229,8 @@ layout: default
           {% endfor %}
         </div>
       
-        <div class="uk-margin-medium-top">
-          <h3>Comments</h3>
+        <div class="uk-margin-large-top">
+          <h2>Comments</h2>
           {% include talkyard-comments.html %}
         </div>
 

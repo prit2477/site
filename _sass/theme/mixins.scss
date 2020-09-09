@@ -1,7 +1,46 @@
+@mixin hook-base-body(){
+}
 
 @mixin hook-offcanvas-bar(){
   @media (max-width: $breakpoint-medium) {
     
+  }
+}
+
+@mixin hook-base-heading(){
+}
+
+@mixin hook-progress(){
+  border-radius: 2px;
+  margin: 0;
+
+  .uk-progress-small {
+    height: 8px;
+  }
+
+  .uk-progress-lesson {
+    background-color: #fff;
+  }
+}
+// @mixin hook-progress-bar(){}
+// @mixin hook-progress-misc(){}
+
+@mixin hook-button-misc(){
+
+  .uk-button {
+    border-radius: 3px;
+  }
+
+  .uk-button-large {
+    letter-spacing: 1px;
+  }
+
+  .uk-button-secondary-preserve {
+    background: $global-secondary-background;
+
+    &:hover {
+      background: lighten($global-secondary-background, 10%);
+    }
   }
 }
 
@@ -16,6 +55,15 @@
 
   @media (max-width: $breakpoint-medium) {
 
+  }
+
+  .uk-nav-course-list {
+    font-size: 1rem;
+    
+  }
+
+  .uk-text-lead {
+    font-weight: 300;;
   }
 
   .uk-nav-default {

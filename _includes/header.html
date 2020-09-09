@@ -25,15 +25,15 @@
       </nav>
     {% endif %}
     <div class="uk-container uk-position-relative"{% if page.header.height %} data-uk-height-viewport="offset-top: true; offset-bottom: 40px"{% endif %}>
-      <div class="uk-margin-large-top uk-margin-xlarge-bottom">
+      <div class="uk-margin-large-top uk-margin-large-bottom">
         <div data-uk-grid>
           <div class="uk-width-{{page.header.width | default: '2-3'}}@m">
             <h1 class="uk-h1">{{ page.header.title }}</h1>
             {% if page.header.subtitle %}
-              <div class="uk-container uk-line-medium uk-h6 uk-text-500 uk-text-lead uk-margin-remove-bottom">{{ page.header.subtitle | markdownify }}</div>
+              <div class="uk-container uk-line-medium uk-text-normal uk-text-lead uk-margin-remove-bottom">{{ page.header.subtitle | markdownify }}</div>
             {% endif %}
             {% if page.header.cta.url %}
-              <a id="header-cta" class="uk-button uk-button-primary uk-margin-medium-top" href="{{page.header.cta.url | relative_url}}">{{page.header.cta.text}}</a>
+              <a id="header-cta" class="uk-button uk-button-large uk-button-secondary-preserve uk-margin-medium-top" href="{{page.header.cta.url | relative_url}}">{{page.header.cta.text}}</a>
             {% endif %}
           </div>
           <div class="uk-width-expand@m">

@@ -14,11 +14,11 @@
   border-radius: 2px;
   margin: 0;
 
-  .uk-progress-small {
+  &.uk-progress-small {
     height: 8px;
   }
 
-  .uk-progress-lesson {
+  &.uk-progress-lesson {
     background-color: #fff;
   }
 }
@@ -55,6 +55,21 @@
 
   @media (max-width: $breakpoint-medium) {
 
+  }
+
+  .uk-lesson-container {
+    > iframe {
+      margin-top: -10px;
+    }
+  }
+
+  .uk-nav-sidebar {
+    .uk-parent {
+      margin: 5px 0;
+      ul li {
+        margin: 5px 0;
+      }
+    }
   }
 
   .uk-nav-course-list {

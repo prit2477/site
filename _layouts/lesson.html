@@ -7,13 +7,14 @@ layout: default
 
     {% assign current_course = site.courses | where: 'slug', page.course | first %}
     {% for section in current_course.sections %}
+      {% assign section_index = forloop.index %}
       {% for item in section.lessons %}
         {% if page.url == item %}
           <ul class="uk-breadcrumb">
             <li><a href="{{ '/courses/' | relative_url }}">Courses</a></li>
             <li><a href="{{ current_course.url | relative_url }}">{{current_course.title}}</a></li>
             {% if section.title %}
-              <li><a href="{{ current_course.url | relative_url }}">{{ section.title }}</a></li>
+              <li><a href="{{ current_course.url | relative_url }}#id-{{section_index}}">{{ section.title }}</a></li>
             {% endif %}
             <li><span>{{ page.title }}</span></li>
           </ul>

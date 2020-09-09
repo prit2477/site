@@ -35,7 +35,7 @@ layout: default
           <p>Your next lesson is <span id="next-lesson-{{page.slug}}" class="uk-text-bold">{{first_lesson.title}}</span></p>
           <div class="uk-text-small"><span id="progress-count-{{page.slug}}">0</span> of {{total_lessons}} videos complete</div>
           <progress id="progress-bar-{{page.slug}}" class="uk-progress uk-width-1-1" value="0" max="{{total_lessons}}"></progress>
-          <a id="course-button-{{page.slug}}" class="uk-button uk-button-secondary uk-margin-top" href="#">Start</a>
+          <a id="course-button-{{page.slug}}" class="uk-button uk-button-secondary uk-margin-top" href="{{first_lesson.url}}">Start</a>
         </div>
       </div>
 
@@ -45,7 +45,8 @@ layout: default
       <div class="uk-margin-large-top">
         <h2>Content</h2>
         {% for section in page.sections %}
-          <h3>{{ section.title }}</h3>
+          {% assign section_index = forloop.index %}
+          <h3 id="id-{{section_index}}">{{ section.title }}</h3>
           <ul class="uk-nav uk-nav-default uk-nav-course-list">
           {% for lesson in section.lessons %}
             {% assign p = site.lessons | where:"url", lesson | first %}

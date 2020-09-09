@@ -35,11 +35,11 @@
     letter-spacing: 1px;
   }
 
-  .uk-button-secondary-preserve {
-    background: $global-secondary-background;
+  .uk-button-primary-preserve {
+    background: darken($global-primary-background, 25%);
 
     &:hover {
-      background: lighten($global-secondary-background, 10%);
+      background: darken($global-primary-background, 30%);
     }
   }
 }

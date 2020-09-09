@@ -1,0 +1,84 @@
+---
+layout: default
+---
+
+{% assign section = page.why_docker %}
+<section class="uk-section">
+  <div class="uk-container">
+    <div class="uk-child-width-1-2@m uk-flex uk-flex-middle uk-grid-large" data-uk-grid>
+      <div>
+        <img src="{{section.image | absolute_url}}" title="{{section.title}}">
+      </div>
+      <div>
+        <h2>{{section.title}}</h2>
+        <div class="uk-margin-medium uk-section-content">{{section.content | markdownify}}</div>
+        <a class="uk-button uk-button-primary-preserve" href="{{section.cta.url | relative_url}}">{{section.cta.text}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% assign section = page.why_us %}
+<section class="uk-section uk-section-muted">
+  <div class="uk-container">
+    <div class="uk-child-width-1-2@m uk-flex uk-flex-middle uk-grid-large" data-uk-grid>
+      <div>
+        <img src="{{section.image | absolute_url}}" title="{{section.title}}">
+      </div>
+      <div class="uk-flex-first@m">
+        <h2>{{section.title}}</h2>
+        <div class="uk-margin-medium uk-section-content">{{section.content | markdownify}}</div>
+        <a class="uk-button uk-button-primary-preserve" href="{{section.cta.url | relative_url}}">{{section.cta.text}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% assign section = page.learn %}
+<section class="uk-section">
+  <div class="uk-container">
+    <div class="uk-child-width-1-2@m uk-flex uk-flex-middle uk-grid-large" data-uk-grid>
+      <div>
+        <img src="{{section.image | absolute_url}}" title="{{section.title}}">
+      </div>
+      <div>
+        <h2>{{section.title}}</h2>
+        <div class="uk-margin-medium uk-section-content">{{section.content | markdownify}}</div>
+        <a class="uk-button uk-button-primary-preserve" href="{{section.cta.url | relative_url}}">{{section.cta.text}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% assign section = page.expect %}
+<section class="uk-section uk-section-muted">
+  <div class="uk-container">
+    <div class="uk-child-width-1-2@m uk-flex uk-flex-middle uk-grid-large" data-uk-grid>
+      <div>
+        <img src="{{section.image | absolute_url}}" title="{{section.title}}">
+      </div>
+      <div class="uk-flex-first@m">
+        <h2>{{section.title}}</h2>
+        <div class="uk-margin-medium uk-section-content">{{section.content | markdownify}}</div>
+        <a class="uk-button uk-button-primary-preserve" href="{{section.cta.url | relative_url}}">{{section.cta.text}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% assign section = page.testimonials %}
+<section class="uk-section uk-section-primary">
+  <div class="uk-container">
+    <h2 class="uk-text-center">{{section.title}}</h2>
+    <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-margin-medium uk-grid-small" data-uk-grid="masonry: true">
+      {% for item in section.tweets %}
+        <div>
+          {{item}}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="uk-text-center">
+      <a class="uk-button uk-button-large uk-button-primary-preserve" href="{{section.cta.url | relative_url}}">{{section.cta.text}}</a>
+    </div>
+  </div>
+</section>

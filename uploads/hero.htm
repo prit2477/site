@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://learndocker.online/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Learn Docker!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="pyCLX8P99UEvRcZbvXVUlR31ZnVdTHAVnJYK-6wAUrM">
+
+    
+<meta name="docker-blocks-client/config/environment" content="%7B%22modulePrefix%22%3A%22docker-blocks-client%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22/%22%2C%22locationType%22%3A%22history%22%2C%22host%22%3A%22https%3A//learndocker.online/%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%7D%2C%22torii%22%3A%7B%22providers%22%3A%7B%22github-oauth2%22%3A%7B%22apiKey%22%3A%22b362900d969dc80c6093%22%2C%22scope%22%3A%22user%3Aemail%22%7D%7D%7D%2C%22googleFonts%22%3A%5B%22Caveat%3A400%2C500%22%2C%22Raleway%3A400%2C500%22%5D%2C%22metricsAdapters%22%3A%5B%7B%22name%22%3A%22GoogleAnalytics%22%2C%22environments%22%3A%5B%22development%22%2C%22production%22%5D%2C%22config%22%3A%7B%22id%22%3A%22UA-117135756-1%22%7D%7D%5D%2C%22APP%22%3A%7B%22name%22%3A%22docker-blocks-client%22%2C%22version%22%3A%220.0.0+93da34c3%22%7D%2C%22stripe%22%3A%7B%22key%22%3A%22pk_live_cwUmgHrH30sHJsAFeLW2Xfmi%22%7D%2C%22something%22%3A%22test%22%2C%22ember-cli-mirage%22%3A%7B%22usingProxy%22%3Afalse%2C%22useDefaultPassthroughs%22%3Atrue%7D%2C%22ember-paper%22%3A%7B%22insertFontLinks%22%3Atrue%7D%2C%22exportApplicationGlobal%22%3Afalse%7D">
+<meta name="admin-engine/config/environment" content="%7B%22modulePrefix%22%3A%22admin-engine%22%2C%22environment%22%3A%22production%22%2C%22ember-paper%22%3A%7B%22insertFontLinks%22%3Atrue%7D%7D">
+<meta name="course-engine/config/environment" content="%7B%22modulePrefix%22%3A%22course-engine%22%2C%22environment%22%3A%22production%22%2C%22ember-collapsible-panel%22%3A%7B%22hasLiquidFire%22%3A%220.28.0%22%7D%2C%22ember-paper%22%3A%7B%22insertFontLinks%22%3Atrue%7D%7D">
+<link href="./hero_files/css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="./hero_files/css(1)"><link rel="stylesheet" href="./hero_files/icon">
+
+    <link rel="stylesheet" href="./hero_files/vendor-6a89dfd1a5ab23dda61a8f54782a9daf.css">
+    <link rel="stylesheet" href="./hero_files/docker-blocks-client-762a1a65768952bc444461a8b110dac2.css">
+
+    <meta name="docker-blocks-client/config/asset-manifest" content="%7B%22bundles%22%3A%7B%7D%7D">
+  <link rel="apple-touch-icon" sizes="57x57" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-57x57-d080e4b0cab9a87311c12aa430faa902.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-60x60-35500c49ed5a42d57ba71c429bf5f863.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-72x72-eca10b078f94da343f4dda1f7607169a.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-76x76-36b96e7237c4a3894aa5e708d0c703be.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-114x114-2da545a5588184f1f7e64e0a6d7fb223.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-120x120-8f804c9e75bf951660883993d3ecee17.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-144x144-ea6974c46a60c67573fa9d85d95d213c.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-152x152-403a63f89490ae447fcdd622402645b4.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-icon-180x180-5b6894d336e95a0fde731c6b40cfcc32.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title">
+<link rel="icon" type="image/png" sizes="228x228" href="https://learn-docker-deploy.s3.amazonaws.com/coast-228x228-cea72b4ee62d40d242d0c43babcaed51.png">
+<link rel="yandex-tableau-widget" href="https://learndocker.online/yandex-browser-manifest.json">
+<link rel="manifest" href="https://learndocker.online/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#fff">
+<meta name="application-name">
+<link rel="icon" type="image/png" sizes="32x32" href="https://learn-docker-deploy.s3.amazonaws.com/favicon-32x32-69112efc1c289dad788581a58aa1c47a.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://learn-docker-deploy.s3.amazonaws.com/favicon-16x16-4f69d3a4a621c518be3ee85730f8e247.png">
+<link rel="shortcut icon" href="https://learndocker.online/favicon.ico">
+<meta name="msapplication-TileColor" content="#fff">
+<meta name="msapplication-TileImage" content="https://learn-docker-deploy.s3.amazonaws.com/mstile-144x144-4546f8a71ac9528d0603a45833894b54.png">
+<meta name="msapplication-config" content="/browserconfig.xml">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-320x460-b7526bebcadc742223c4ab7b660b3ebb.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-640x920-52fe32fbc9f77dc78be4adee10846859.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-640x1096-e40bf7215e0b6f9cf0d1e321016626dd.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-750x1294-8ea603232c344077505a3cf77b22ec27.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-1182x2208-254445fa48dc94d21348b11a1d073b05.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-1242x2148-596b48cfc6e04173ccc567fcdcdc6e04.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-748x1024-047f7a7440b11f33c20398be4689d865.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-768x1004-a701d5b0beee2fc00c1a90f66079a84c.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-1496x2048-9e1c281c192b00734c7cf39a6688e63c.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="https://learn-docker-deploy.s3.amazonaws.com/apple-touch-startup-image-1536x2008-16426d405899eca715aa4338a2aa8e65.png">
+<style type="text/css"></style><style type="text/css"></style><meta name="ember-cli-head-start"><!-- `ember-cli-meta-tags/templates/head.hbs` -->
+  <meta property="og:locale" content="en_US" id="ember374" class="ember-view">
+</meta>
+  <meta property="og:type" content="website" id="ember376" class="ember-view">
+</meta>
+  <meta property="og:title" content="LearnDocker.online- Online Docker Training" id="ember378" class="ember-view">
+</meta>
+  <meta property="og:url" content="https://www.learndocker.online/" id="ember380" class="ember-view">
+</meta>
+  <meta property="og:image" content="https://s3.amazonaws.com/learn-docker/logo.png" id="ember382" class="ember-view">
+</meta>
+  <meta property="og:description" content="Learning Docker doesn&#39;t have to be hard. At LearnDocker.online we&#39;ll give step-by-step instructions to make the process way easier." id="ember384" class="ember-view">
+</meta>
+  <meta name="twitter:card" content="summary" id="ember386" class="ember-view">
+</meta>
+  <meta name="twitter:site" content="@jufahr" id="ember388" class="ember-view">
+</meta>
+  <meta name="twitter:description" content="Learning Docker doesn&#39;t have to be hard. At LearnDocker.online we&#39;ll give step-by-step instructions to make the process way easier." id="ember390" class="ember-view">
+</meta>
+  <meta name="twitter:title" content="LearnDocker.online" id="ember392" class="ember-view">
+</meta>
+  <meta name="twitter:image" content="https://s3.amazonaws.com/learn-docker/logo.png" id="ember394" class="ember-view">
+</meta>
+  <meta name="description" content="Learning Docker doesn&#39;t have to be hard. At LearnDocker.online we&#39;ll give step-by-step instructions to make the process way easier." id="ember396" class="ember-view">
+</meta>
+  <meta name="keywords" content="Learn Docker, Docker Training, Docker Swarm, Docker, Kubernetes, Containerization" id="ember398" class="ember-view">
+</meta>
+  <meta name="robots" content="index,follow" id="ember400" class="ember-view">
+</meta>
+  <meta name="format-detection" id="ember402" class="ember-view">
+</meta>
+
+<meta name="ember-cli-head-end">
+</head>
+  <body class="ember-application">
+    <script async="" src="./hero_files/analytics.js"></script><script src="./hero_files/checkout.js"></script>
+
+    <script src="./hero_files/vendor-d49543f44b27482fe619ed75bf87d69e.js"></script>
+    <script src="./hero_files/docker-blocks-client-546abd6037f46e520081ecd5035d7a34.js"></script>
+
+    
+          <div id="ember-basic-dropdown-wormhole"></div>
+          <div id="paper-wormhole"></div>
+          <div id="paper-toast-fab-wormhole"></div>
+        
+  
+
+<div id="ember403" class="ember-view"><div id="ember412" class="navbar-white ember-view">
+<md-toolbar id="ember421" class="navbar md-default-theme ember-view">    <div class="md-toolbar-tools">
+<a href="https://learndocker.online/" id="ember428" class="brand active ember-view">        <nav class="navbar">
+          <span class="navbar-brand h1">
+            <span class="vertical-center">LearnDocker.online</span>
+          </span>
+        </nav>
+</a>        <a href="https://learndocker.online/courses" id="ember662" class="navbar-link hide-xs ember-view">My Courses</a>
+<!---->      <a href="mailto:julian@learndocker.online?subject=Question%20about%20LearnDocker.online" target="_blank" class="navbar-link hide-xs">Contact Us</a>
+      <div class="flex"></div>
+
+      <div class="hide-gt-xs">
+<md-menu aria-owns="ember-basic-dropdown-content-ember454" tabindex="-1" data-ebd-id="ember454-trigger" role="button" id="ember459" class="ember-basic-dropdown-trigger ember-view"><button type="button" tabindex="0" id="ember474" class="center-icon-button md-default-theme md-button ember-view md-ink-ripple">                <md-icon md-font-icon="more-vert" aria-label="more-vert" id="ember479" class="md-menu-origin paper-icon md-font material-icons md-default-theme ember-view">more_vert
+
+</md-icon>
+
+<div class="md-ripple-container"></div></button></md-menu><!---->
+      </div>
+
+        <div class="topbar-text">
+<a href="https://learndocker.online/user" id="ember678" class="ember-view">            ivanchromjak 60
+</a>        </div>
+<!---->        <div id="ember691" class="ember-view"><md-menu aria-owns="ember-basic-dropdown-content-ember692" tabindex="-1" data-ebd-id="ember692-trigger" role="button" id="ember693" class="ember-basic-dropdown-trigger ember-view"><button type="button" tabindex="0" id="ember694" class="avatar-button md-default-theme md-button ember-view md-ink-ripple">        <img src="./hero_files/2057187" class="md-menu-origin">
+
+<div class="md-ripple-container"></div></button></md-menu><!---->
+</div>
+    </div>
+
+</md-toolbar>  <div class="flash-messages">
+<!---->  </div>
+</div>
+
+<md-content id="ember492" class="md-default-theme ember-view">  <header class="hero bg-blue">
+    <div class="paper-container-large homepage-header">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><strong>LearnDocker.online</strong> is the most comprehensive online Docker training program on the planet.​</h1>
+          <h4>Get the finest theory combined with practical coding, real world instructions, and tests to show mastery <strong>for FREE</strong>.</h4>
+          <button type="button" tabindex="0" id="ember495" class="md-default-theme md-button md-raised ember-view md-ink-ripple">  Start Learning
+<div class="md-ripple-container"></div></button> &nbsp;
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="paper-container-large">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 center-md vertical-center">
+          <img src="./hero_files/demo-0638f58ae692338cb7aeccdd315e1189.png" class="img-responsive vertical-center">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <h2 class="section-title margin-sm">Why Learn Docker?</h2>
+          <p>You want to work on making your app awesome, not messing with infrastructure…
+              but every time someone joins your team, you need to spend 2 days installing stuff,
+              no one has the same versions,
+              and you get a call at 10pm and have to spend the next 17 hours debugging your server because someone ‘upgraded’ a dependency.</p>
+          <p>Docker can make that go away.</p>
+          <p>Add to that easy deploys, easy scaling, load balancing, app inter-op, and all the little features you'll need for your growing company, and you have a winner.</p>
+          <p>But here's the thing: to get rid of all that pain you're feeling, you have to go actually learn Docker.  Which can be intimidating.</p>
+          <p>That's why we made LearnDocker.online.  It's the easiest way to go from zero to docker master, all in four simple courses.</p>
+           <button type="button" tabindex="0" id="ember496" class="md-default-theme md-button md-primary md-raised ember-view md-ink-ripple">  Yes, I want (mostly) painless ops!
+<div class="md-ripple-container"></div></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray">
+    <div class="paper-container-large">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h2 class="section-title margin-lg">Why us? Why use LearnDocker.online?</h2>
+          <ul>
+            <li>LearnDocker.online gracefully introduces concepts and tools instead of overwhelming you with information.  We also make sure you get it before you move on.</li>
+            <li>The Docker Ecosystem changes quickly. LearnDocker.online uses the latest version of Docker so you will be kept up to date and learn what and what not to do. As Docker evolves so do we.</li>
+            <li>More than just Docker. We will look at the ecosystem around Docker and containers and you will learn specifically how to apply the right tools in your daily life. Real world applicability and best practices matter.</li>
+            <li>We have almost 300 videos, quizzes, projects, and more. Payments are optional and the full course content is accessible for FREE! If you feel like you learned what you wanted to learn, you can make a payment.</li>
+            <button type="button" tabindex="0" id="ember497" class="md-default-theme md-button md-primary md-raised ember-view md-ink-ripple">  That sounds Amazing
+<div class="md-ripple-container"></div></button>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-12 center-md">
+          <img src="./hero_files/why-use-learndocker-ba8d70e2f48f2a53ac21db5c8535bd27.png" alt="" class="img-responsive">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-purple">
+    <div class="paper-container-large">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 center-md">
+          <img src="./hero_files/what-will-i-learn-4040068432ac6c5038b371d1fdb492ca.png" alt="" class="img-responsive">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <h2 style="margin-top: 0;" class="section-title">What Will I Learn?</h2>
+          <ul>
+            <li>What Docker is and how containers work. Learning this will allow you to overcome many challenges and obstacles when it comes to managing your applications and infrastructure.</li>
+            <li>Where containers shine, how to use them efficiently in real world applications to simplify your environments.</li>
+            <li>How to integrate Docker and containers into your development workflow.</li>
+            <li>How to make use of Docker in every step in the lifecycle of your applications: From development over deployment to running and debugging them.</li>
+            <li>How to implement sophisticated solutions for a containerized infrastructure including the integration of systems for continuous integration, monitoring and logging.</li>
+            <li>Best practices and common patterns and processes around dealing with containers.</li>
+            <li>And more! <a href="https://learndocker.online/demo" id="ember498" class="ember-view">Click here</a> to see the full table of contents.</li>
+            <button type="button" tabindex="0" id="ember499" class="md-default-theme md-button md-primary md-raised ember-view md-ink-ripple">  Start learning for free
+<div class="md-ripple-container"></div></button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark">
+    <div class="paper-container-large">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h2 class="section-title margin-xl">What Can I Expect During The Course?</h2>
+          <ul>
+            <li>Almost 300 videos with over 11 hours of content. There is PLENTY to learn!</li>
+            <li>Easy to follow examples that make sense</li>
+            <li>Assignments: Apply what you learn in carefully crafted exercises that you will complete on your own</li>
+            <li>Quizzes: Test and expand your knowledge</li>
+            <li>Ask questions as you go and get quick answers or Email our instructors. We guarantee to get your questions answered.</li>
+            <li>Instructors who really care that you get this material and thrive in your Docker education!</li>
+            <button type="button" tabindex="0" id="ember500" class="md-default-theme md-button md-raised ember-view md-ink-ripple">  I'm ready to learn
+<div class="md-ripple-container"></div></button>
+          </ul>
+        </div>
+        <div class="col-md-1 col-sm-12"></div>
+        <div class="col-md-5 col-sm-12 center-md">
+          <img src="./hero_files/what-can-i-expect-0ce86c3cdd0cf77b8db5dfba65fd0b43.png" alt="" class="img-responsive">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experts-say" class="section bg-light-blue">
+    <div class="paper-container-large">
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <h1 class="bold">Here's what others are saying:</h1>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+<div class="testimonial-wrapper col-md-4 col-sm-4">
+  <div class="row testimonial">
+<!---->    <div class="col-md-8 col-xs-8 vertical-center">
+                <p>"It is impressive how much great content @jufahr packed into <a href="https://learndocker.online/">https://LearnDocker.online</a>  - check it out if you want to learn more about Docker! This course is awesome!"
+          <a href="https://twitter.com/MarcoBrinkmeier/status/993937897668730880" target="_blank"><img src="./hero_files/twitter-icon-98e10db73444927ca78b281c5cda0896.png" style="width: 20px; vertical-align: middle;"></a>
+</p>
+          <p>--Marco Brinkmeier, Developer
+          </p>
+
+    </div>
+      <div class="col-md-4 col-xs-4 vertical-center">
+        <img src="./hero_files/marco-pic.png">
+      </div>
+  </div>
+</div>
+<div class="testimonial-wrapper col-md-4 col-sm-4">
+  <div class="row testimonial">
+<!---->    <div class="col-md-8 col-xs-8 vertical-center">
+                <p>"Checking out this new <a href="https://learndocker.online/">learndocker.online</a>  by @jufahr! VERY professionally done and complete course on how to Learn Docker. I've never seen a course online with a 110% refund if you don't like it. Check it out at <a href="https://learndocker.online/">https://learndocker.online</a> "
+          <a href="https://twitter.com/shanselman/status/1014385253647962112" target="_blank"><img src="./hero_files/twitter-icon-98e10db73444927ca78b281c5cda0896.png" style="width: 20px; vertical-align: middle;"></a>
+</p>
+          <p>--Scott Hanselman, Teacher, Speaker, and Microsoft Developer
+          </p>
+
+    </div>
+      <div class="col-md-4 col-xs-4 vertical-center">
+        <img src="./hero_files/hanselman-pic.jpg">
+      </div>
+  </div>
+</div>
+<div class="testimonial-wrapper col-md-4 col-sm-4">
+  <div class="row testimonial">
+<!---->    <div class="col-md-8 col-xs-8 vertical-center">
+                <p>"Julian has a deep understanding of docker and is a great teacher to boot! If you're looking to start learning docker, or learn more, check out this course."
+          <a href="https://twitter.com/hjhart/status/997555671628267520" target="_blank"><img src="./hero_files/twitter-icon-98e10db73444927ca78b281c5cda0896.png" style="width: 20px; vertical-align: middle;"></a>
+</p>
+          <p>--James Hart, Developer</p>
+
+    </div>
+      <div class="col-md-4 col-xs-4 vertical-center">
+        <img src="./hero_files/james-pic.jpeg">
+      </div>
+  </div>
+</div>
+<div class="testimonial-wrapper col-md-4 col-sm-4">
+  <div class="row testimonial">
+<!---->    <div class="col-md-8 col-xs-8 vertical-center">
+                <p>"If you're learning #docker https://learndocker.online  is a great resource!!!"
+          <a href="https://twitter.com/alex_v_bush/status/994309768817750016" target="_blank"><img src="./hero_files/twitter-icon-98e10db73444927ca78b281c5cda0896.png" style="width: 20px; vertical-align: middle;"></a>
+</p>
+          <p>--Alex Bush, Author and Developer
+          </p>
+
+    </div>
+      <div class="col-md-4 col-xs-4 vertical-center">
+        <img src="./hero_files/alex-pic.jpeg">
+      </div>
+  </div>
+</div>
+<div class="testimonial-wrapper col-md-4 col-sm-4">
+  <div class="row testimonial">
+<!---->    <div class="col-md-8 col-xs-8 vertical-center">
+                <p>"If you're looking to learn @Docker (and who isn't these days), @jufahr has created THE course for you. Hundreds of detailed videos covering everything from fundamentals to using Docker in production. It is seriously amazing! https://learndocker.online/"
+          <a href="https://twitter.com/samjulien/status/1001522396749185025" target="_blank"><img src="./hero_files/twitter-icon-98e10db73444927ca78b281c5cda0896.png" style="width: 20px; vertical-align: middle;"></a>
+</p>
+          <p>--Sam Julien, Course Creator and Developer
+          </p>
+
+    </div>
+      <div class="col-md-4 col-xs-4 vertical-center">
+        <img src="./hero_files/sam-pic.jpg">
+      </div>
+  </div>
+</div>
+<div class="testimonial-wrapper col-md-4 col-sm-4">
+  <div class="row testimonial">
+<!---->    <div class="col-md-8 col-xs-8 vertical-center">
+                <p>"Need to dockerize your app but don't know where to start?  LearnDocker is an awesome course:  https://learndocker.online/"
+          <a href="https://twitter.com/JeffreyBiles/status/1001509512220631042" target="_blank"><img src="./hero_files/twitter-icon-98e10db73444927ca78b281c5cda0896.png" style="width: 20px; vertical-align: middle;"></a>
+</p>
+          <p>--Jeffrey Biles, Tech Educator and Developer
+          </p>
+
+    </div>
+      <div class="col-md-4 col-xs-4 vertical-center">
+        <img src="./hero_files/jeffrey-pic.jpg">
+      </div>
+  </div>
+</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="text-center final-homepage-cta">
+            <div class="m-t-20">
+              <button type="button" tabindex="0" id="ember519" class="md-default-theme md-button md-raised ember-view md-ink-ripple">  <h1>Join our great students</h1>
+<div class="md-ripple-container"></div></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="paper-container-large">
+      <span>A course by Julian Fahrer.</span>
+      <span class="copyright">©2018 Happy Programmer LLC. All rights reserved.</span>
+      <ul class="nav-terms list-inline list-unstyled">
+        <li><a href="https://learndocker.online/terms-and-conditions" id="ember520" class="ember-view">Terms and Conditions</a></li>
+        <li><a href="https://learndocker.online/privacy" id="ember525" class="ember-view">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</md-content>
+</div></body></html>

@@ -16,6 +16,11 @@
   &.uk-progress-lesson {
     background-color: #fff;
   }
+
+  &.uk-progress-lesson::-webkit-progress-bar {
+    background-color: #fff;
+  }
+
 }
 
 @mixin hook-button-misc(){
@@ -30,9 +35,11 @@
 
   .uk-button-primary-preserve {
     background: darken($global-primary-background, 25%);
+    color: #fff;
 
     &:hover {
       background: darken($global-primary-background, 30%);
+      color: #fff;
     }
   }
 }
@@ -48,6 +55,17 @@
 
   @media (max-width: $breakpoint-medium) {
 
+  }
+
+  .uk-section-content {
+    ul {
+      margin: 0;
+
+      li:not(:first-child) {
+        margin-top: 18px;
+      }
+
+    }
   }
 
   .uk-lesson-container {

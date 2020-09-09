@@ -12,6 +12,19 @@
     ];  
   {% endfor %}
 
+  var urls = {
+  {% for course in site.courses %}
+    {% for section in course.sections %}
+      {% for lesson in section.lessons %}
+        {% assign lesson_post = site.lessons | where: 'url', lesson | first %}
+        '{{lesson_post.lesson_id}}': ['{{lesson_post.title}}', '{{lesson_post.url | relative_url}}']{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  };  
+
   var isInLocalStorageArray = function (array, lesson) {
     if (array.includes(lesson)) {
       return true;

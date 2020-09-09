@@ -63,6 +63,11 @@ layout: default
           resumeLessonId = item;
           if (!resumeCourse && x > 0) {
             document.getElementById('course-button-' + course).innerHTML = 'Resume';
+            document.getElementById('course-button-' + course).setAttribute('href', urls[item][1]);
+            document.getElementById('header-next-lesson').innerHTML = 'It looks like your next lesson is <b>' + urls[item][0] + '</b>.<br>';
+            document.getElementById('header-cta').setAttribute('href', urls[item][1]);
+            
+            console.log(urls[item][1]);
             resumeCourse = true;
           }
         }

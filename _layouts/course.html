@@ -18,13 +18,21 @@ layout: default
         </div>
         <div>
           <h3 class="uk-card-title">{{page.title}}</h3>
-          <p>Your next lesson is <span id="next-lesson" class="uk-text-bold">The whats and whys: What is Docker</span></p>
           {% assign total_lessons = 0 %}
           {% for section in page.sections %}
+            {% if forloop.first == true %}
+              {% assign first_section = true %}
+            {% else %}
+              {% assign first_section = false %}
+            {% endif %}
             {% for lesson in section.lessons %}
+              {% if forloop.first == true and first_section == true %}
+                {% assign first_lesson = site.lessons | where:"url", lesson | first %}
+              {% endif %}
               {% assign total_lessons = total_lessons | plus: 1 %}
             {% endfor %}
           {% endfor %}
+          <p>Your next lesson is <span id="next-lesson-{{page.slug}}" class="uk-text-bold">{{first_lesson.title}}</span></p>
           <div class="uk-text-small"><span id="progress-count-{{page.slug}}">0</span> of {{total_lessons}} videos complete</div>
           <progress id="progress-bar-{{page.slug}}" class="uk-progress uk-width-1-1" value="0" max="{{total_lessons}}"></progress>
             <a id="course-button-{{page.slug}}" class="uk-button uk-button-small uk-button-primary" href="#">Start</a>
@@ -71,6 +79,8 @@ layout: default
           resumeLessonId = item;
           if (!resumeCourse && x > 0) {
             document.getElementById('course-button-' + course).innerHTML = 'Resume';
+            document.getElementById('next-lesson-' + course).innerHTML = urls[item][0];
+            document.getElementById('course-button-' + course).setAttribute('href', urls[item][1]);
             resumeCourse = true;
           }
         }

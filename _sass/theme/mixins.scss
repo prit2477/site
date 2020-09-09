@@ -1,13 +1,8 @@
-@mixin hook-base-body(){
-}
 
 @mixin hook-offcanvas-bar(){
   @media (max-width: $breakpoint-medium) {
     
   }
-}
-
-@mixin hook-base-heading(){
 }
 
 @mixin hook-progress(){
@@ -22,8 +17,6 @@
     background-color: #fff;
   }
 }
-// @mixin hook-progress-bar(){}
-// @mixin hook-progress-misc(){}
 
 @mixin hook-button-misc(){
 

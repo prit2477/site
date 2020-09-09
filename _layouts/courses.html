@@ -37,7 +37,7 @@ layout: default
               <div class="uk-child-width-1-2 uk-margin-top uk-flex uk-flex-middle" data-uk-grid>
                 <div>Overview</div>
                 <div class="uk-text-right uk-position-z-index">
-                  <a id="course-button-{{course.slug}}" class="uk-button uk-button-small uk-button-primary" href="{{first_lesson.url}}">Start</a>
+                  <a id="course-button-{{course.slug}}" class="uk-button uk-button-small uk-button-primary" href="{{first_lesson.url | relative_url}}">Start</a>
                 </div>
               </div>
             </div>
@@ -75,15 +75,11 @@ layout: default
             document.getElementById('header-next-lesson').innerHTML = 'It looks like your next lesson is <b>' + urls[item][0] + '</b>.<br>';
             document.getElementById('header-cta').setAttribute('href', urls[item][1]);
             document.getElementById('header-cta').innerHTML = 'Resume';
-            
-            console.log(urls[item][1]);
             resumeCourse = true;
           }
         }
       });
     }); 
-
-    console.log(courseCompletedCount);
 
     document.getElementById('progress-count-' + course).innerHTML = courseCompletedCount;
     document.getElementById('progress-bar-' + course).value = courseCompletedCount;

@@ -142,14 +142,10 @@ layout: default
 
             function toggleCompleted() {
               if (isInLocalStorageArray(lessonArray, lesson)) {
-                console.log('WAS INCLUDED REMOVING');
 
                 removeFromLocalStorageArray('{{current_course.slug}}', lesson)
-                console.log(localStorage.getItem('{{current_course.slug}}'));
               } else {
-                console.log('NOT INCLUDED ADDED NOW');
                 addToLocalStorageArray('{{current_course.slug}}', lesson);
-                console.log(localStorage.getItem('{{current_course.slug}}'));
 
                 lessonString = localStorage.getItem('{{current_course.slug}}');
                 lessonArray = lessonString.split(',');
@@ -158,11 +154,6 @@ layout: default
               document.getElementById('progress').value = sectionCompletedCount();
             };
 
-            console.log(lessonArray);
-            console.log(lesson);
-            console.log(index);
-            console.log(lessonArray.includes(lesson));
-            
             if (isInLocalStorageArray(lessonArray, lesson)) {
               completedCheckbox.checked = true;
             }

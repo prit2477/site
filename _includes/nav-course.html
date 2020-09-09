@@ -45,13 +45,10 @@
     courseArray = {{current_course.slug}}Array;
     courseArray.forEach(function (section, i) { 
 
-      // console.log(section);
-
       section.forEach(function (item) { 
         if (isInLocalStorageArray(lessonArray, item)) {
           document.getElementById('id-' + item).classList.add('uk-completed');   
           sidebarSectionCompletedCount++;
-          // console.log(item);
           
         } else {
           if (!sidebarSectionParentOpen) {
@@ -61,7 +58,6 @@
         }
       });
 
-      console.log('section-count-' + i);
       document.getElementById('section-count-' + i).innerHTML = sidebarSectionCompletedCount; 
       sidebarSectionCompletedCount = 0;  
 

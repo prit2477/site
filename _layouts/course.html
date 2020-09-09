@@ -50,7 +50,7 @@ layout: default
           <ul class="uk-nav uk-nav-default uk-nav-course-list">
           {% for lesson in section.lessons %}
             {% assign p = site.lessons | where:"url", lesson | first %}
-            <li class="{% if lesson_url == page.url %}uk-active{% endif %}"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+            <li class="{% if lesson_url == page.url %}uk-active{% endif %}"><a href="{{ p.url | relative_url }}"><span id="id-{{p.lesson_id}}" class="uk-lesson-check uk-margin-small-right" data-uk-icon="icon: check; ratio: 0.75"></span>{{ p.title }}</a></li>
           {% endfor %}
           </ul>
         {% endfor %}
@@ -94,4 +94,30 @@ layout: default
   };
 
   courseCompletedCount('{{page.slug}}', {{page.slug}}Array);
+</script>
+
+<script>
+  var sidebarCompletedCount = function () {
+    
+    courseArray = {{page.slug}}Array;
+    courseArray.forEach(function (section, i) { 
+
+      section.forEach(function (item) { 
+        if (isInLocalStorageArray(lessonArray, item)) {
+          document.getElementById('id-' + item).classList.add('uk-check-completed');   
+        }
+      });
+
+    }); 
+  };
+
+  var lessonString = localStorage.getItem('{{page.slug}}');
+
+  if (lessonString === null) {
+    var lessonArray = '';
+  } else {
+    var lessonArray = lessonString.split(',');
+  }
+
+  sidebarCompletedCount();
 </script>

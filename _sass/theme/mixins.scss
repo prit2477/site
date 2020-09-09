@@ -57,6 +57,23 @@
 
   }
 
+  .uk-lesson-check {
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    border-radius: 500px;
+    background: $global-muted-background;
+    vertical-align: middle;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .uk-check-completed {
+    background-color: $global-primary-background;
+    color: #fff;
+  }
+
   .uk-section-content {
     ul {
       margin: 0;
